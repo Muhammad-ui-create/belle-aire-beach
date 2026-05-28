@@ -1,41 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    touchMultiplier: 1.5
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
   const nav = document.querySelector('.nav');
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
 
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
+  lenis.on('scroll', ({ scroll }) => {
+    nav.classList.toggle('scrolled', scroll > 60);
+  });
 
   if (toggle) {
     toggle.addEventListener('click', () => {
       toggle.classList.toggle('open');
       links.classList.toggle('open');
-      document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+      if (links.classList.contains('open')) {
+        lenis.stop();
+        document.body.style.overflow = 'hidden';
+      } else {
+        lenis.start();
+        document.body.style.overflow = '';
+      }
     });
 
     links.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         toggle.classList.remove('open');
         links.classList.remove('open');
+        lenis.start();
         document.body.style.overflow = '';
       });
     });
   }
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const delay = Array.from(entry.target.parentElement.children)
-          .filter(c => c.classList.contains('fade-in'))
-          .indexOf(entry.target) * 120;
+        const siblings = Array.from(entry.target.parentElement.children)
+          .filter(c => c.classList.contains('fade-in'));
+        const delay = siblings.indexOf(entry.target) * 120;
         setTimeout(() => entry.target.classList.add('visible'), delay);
       }
     });
