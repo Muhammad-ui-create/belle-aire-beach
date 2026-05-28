@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "belle-aire",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "C:\\Claude Code\\belle-aire-beach", "-l", "3456"],
+      "port": 3456
+    }
+  ]
+}
