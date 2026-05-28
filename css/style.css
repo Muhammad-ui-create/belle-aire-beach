@@ -125,8 +125,7 @@ img {
 .nav-logo img {
   height: 48px;
   width: auto;
-  filter: invert(1);
-  mix-blend-mode: screen;
+  filter: brightness(0) invert(1);
 }
 
 .nav-logo .nav-logo-text {
@@ -252,12 +251,9 @@ img {
 }
 
 .hero-logo {
-  width: 260px;
-  margin: 0 auto 20px;
-  background: var(--white);
-  border-radius: 16px;
-  padding: 16px 24px;
-  box-shadow: 0 4px 16px rgba(10, 22, 40, 0.08);
+  width: 280px;
+  margin: 0 auto 24px;
+  filter: brightness(0) invert(1);
 }
 
 .hero-sub {
