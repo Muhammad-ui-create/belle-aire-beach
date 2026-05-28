@@ -134,7 +134,7 @@ img {
 }
 
 .nav-logo img {
-  height: 140px;
+  height: 200px;
   width: auto;
   filter: brightness(0) invert(1);
 }
@@ -262,7 +262,7 @@ img {
 }
 
 .hero-logo {
-  width: 280px;
+  width: 400px;
   margin: 0 auto 24px;
   filter: brightness(0) invert(1);
 }
@@ -1245,7 +1245,7 @@ img {
 }
 
 .footer-brand .nav-logo img {
-  height: 120px;
+  height: 180px;
 }
 
 .footer-brand p {
@@ -1490,7 +1490,7 @@ img {
   }
 
   .hero-logo {
-    width: 160px;
+    width: 240px;
   }
 
   .footer-grid {

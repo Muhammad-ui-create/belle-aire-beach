@@ -1,34 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const lenis = new Lenis({
-    duration: 1.4,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    touchMultiplier: 1.5
-  });
+  let lenis;
 
-  function raf(time) {
-    lenis.raf(time);
+  try {
+    lenis = new Lenis({
+      duration: 1.6,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+      infinite: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
+  } catch (e) {
+    document.documentElement.style.scrollBehavior = 'smooth';
   }
-  requestAnimationFrame(raf);
 
   const nav = document.querySelector('.nav');
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
 
-  lenis.on('scroll', ({ scroll }) => {
-    nav.classList.toggle('scrolled', scroll > 60);
-  });
+  if (lenis) {
+    lenis.on('scroll', ({ scroll }) => {
+      nav.classList.toggle('scrolled', scroll > 60);
+    });
+  } else {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  }
 
   if (toggle) {
     toggle.addEventListener('click', () => {
       toggle.classList.toggle('open');
       links.classList.toggle('open');
       if (links.classList.contains('open')) {
-        lenis.stop();
+        if (lenis) lenis.stop();
         document.body.style.overflow = 'hidden';
       } else {
-        lenis.start();
+        if (lenis) lenis.start();
         document.body.style.overflow = '';
       }
     });
@@ -37,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         toggle.classList.remove('open');
         links.classList.remove('open');
-        lenis.start();
+        if (lenis) lenis.start();
         document.body.style.overflow = '';
       });
     });
