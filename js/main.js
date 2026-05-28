@@ -3,9 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 
   if (toggle) {
     toggle.addEventListener('click', () => {
@@ -24,12 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+    entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        const delay = Array.from(entry.target.parentElement.children)
+          .filter(c => c.classList.contains('fade-in'))
+          .indexOf(entry.target) * 120;
+        setTimeout(() => entry.target.classList.add('visible'), delay);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
