@@ -123,9 +123,14 @@ img {
 }
 
 .nav-logo img {
-  height: 40px;
+  height: 48px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
+.nav-logo .nav-logo-text {
+  display: none;
 }
 
 .nav-links {
@@ -247,9 +252,12 @@ img {
 }
 
 .hero-logo {
-  width: 220px;
-  margin: 0 auto 24px;
-  filter: brightness(0) invert(1);
+  width: 260px;
+  margin: 0 auto 20px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 16px 24px;
+  box-shadow: 0 4px 16px rgba(10, 22, 40, 0.08);
 }
 
 .hero-sub {
