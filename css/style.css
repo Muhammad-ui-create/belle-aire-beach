@@ -1392,6 +1392,14 @@ img {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 968px) {
+  .nav-logo img {
+    height: 90px;
+  }
+
+  .nav.scrolled {
+    padding: 8px 0;
+  }
+
   .nav-links {
     display: none;
     position: fixed;
@@ -1420,6 +1428,14 @@ img {
   .nav-toggle {
     display: flex;
     z-index: 1001;
+  }
+
+  .hero-logo {
+    width: 280px;
+  }
+
+  .hero-glass {
+    padding: 40px 28px;
   }
 
   .about-grid,
@@ -1454,6 +1470,10 @@ img {
     gap: 20px;
   }
 
+  .footer-brand .nav-logo img {
+    height: 120px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
@@ -1475,12 +1495,29 @@ img {
     left: 20px;
   }
 
-  .hero-glass {
-    padding: 40px 28px;
+  .page-hero {
+    height: 40vh;
+    min-height: 300px;
+  }
+
+  .cta-banner {
+    padding: 70px 0;
   }
 }
 
 @media (max-width: 600px) {
+  .nav-logo img {
+    height: 65px;
+  }
+
+  .nav {
+    padding: 12px 0;
+  }
+
+  .nav.scrolled {
+    padding: 6px 0;
+  }
+
   .section {
     padding: 60px 0;
   }
@@ -1490,11 +1527,61 @@ img {
   }
 
   .hero-logo {
-    width: 240px;
+    width: 200px;
+  }
+
+  .hero-glass {
+    padding: 32px 20px;
+    margin: 0 12px;
+  }
+
+  .hero-badge {
+    font-size: 0.65rem;
+    padding: 8px 20px;
+  }
+
+  .hero-sub {
+    font-size: 0.92rem;
+    margin-bottom: 28px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .page-hero {
+    height: 35vh;
+    min-height: 250px;
+  }
+
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+
+  .page-hero p {
+    font-size: 0.92rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .cta-banner {
+    padding: 50px 0;
+  }
+
+  .cta-banner h2 {
+    font-size: 1.6rem;
+  }
+
+  .footer-brand .nav-logo img {
+    height: 80px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .footer-bottom {
@@ -1517,5 +1604,17 @@ img {
 
   .menu-item-price {
     margin-left: 0;
+  }
+
+  .story-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-detail {
+    gap: 14px;
+  }
+
+  .directions-grid .direction-card {
+    padding: 28px 20px;
   }
 }
