@@ -77,6 +77,68 @@ img {
   padding: 0 24px;
 }
 
+/* ── THREE.JS 3D LAYERS ── */
+#three-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero,
+.page-hero,
+.section,
+.features,
+.cta-banner,
+.story-content,
+.contact-section,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+.nav {
+  z-index: 1000;
+}
+
+.three-hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content,
+.page-hero-content {
+  z-index: 2;
+}
+
+.three-section-food {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.features > .container,
+.cta-banner > .container,
+.cta-banner > .cta-inner,
+.features .section-header,
+.features .feature-grid,
+.features .features-grid {
+  position: relative;
+  z-index: 2;
+}
+
 /* ── SVG ICONS ── */
 .icon {
   width: 24px;
